@@ -1,22 +1,36 @@
-import {
-  AddButton,
-  SubTitle,
-  TextContainer,
-  Title,
-  Wrapper,
-} from './ProductCard.styled';
+import { AddButton, SubTitle,TextContainer,Title,Wrapper,} from './ProductCard.styled';
+import { useState, useEffect, useContext } from 'react';
 import { Product } from '../../models';
-import storeContext from '../../context';
-import useShop from '../../context';
+import { ClothingShopContext } from '../../context';
 
 export const ProductCard = ({ name, imageUrl, price }: Product) => {
-  const { products, addToCart, removeFromCart } = useShop();
+  const {products, addToCart, removeItem} = useContext(ClothingShopContext);
   const [isInCart, setIsInCart] = useState(false);
   
+  useEffect(() => {
+    const itemInCart = products.find((product: { name: string; }) => product.name === name);
+
+    if (itemInCart) {
+      setIsInCart(true);
+    } else {
+      setIsInCart(false);
+    }
+  }, [products, name]);
+  
+  const handleClick = () => {
+    const product = {name, imageUrl, price};
+    if(isInCart){
+      removeItem(product);
+      setIsInCart(false);
+    } else{
+      addToCart(product);
+      setIsInCart(true);
+    }
+  }
   return (
     <Wrapper background={imageUrl}>
-      <AddButton isInCart={false} onClick={() => {}}>
-        <p>+</p>
+      <AddButton isInCart={isInCart} onClick={handleClick}>
+        <p>{isInCart? "-" : "+"}</p>
       </AddButton>
       <TextContainer>
         <Title>{name}</Title>

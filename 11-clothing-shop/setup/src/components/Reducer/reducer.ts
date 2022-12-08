@@ -1,39 +1,66 @@
-import React from "react";
+import { Product } from "../../models";
 
+export const shopReducer = (state: ShopState, action: ShopAction) => {
+  switch (action.type) {
+    case ShopActionType.ADD:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
+    case ShopActionType.REMOVE:
+      return {
+        ...state,
+        products: action.payload,
+      };
+
+    case ShopActionType.UPDATE:
+      return {
+        ...state,
+        total: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export type ShopState = {
+    products: Product[],
+    total: number,
+    addToCart: any,
+    removeItem: any
+}
 
 export const initialState = {
+    products: [],
     total: 0,
-    products: []
+    addToCart: null,
+    removeItem: null,
 }
 
-// any
-const shopReducer = (state : any, action : any) => {
-const {type, payload} = action;
 
-switch(type){
-    case "ADD_TO_CART":
-        console.log("ADD_TO_CART", payload);
-        return {
-            ... state,
-            products: payload.products
-        };
-    case "REMOVE_FROM_CART":
-        console.log("REMOVE_FROM_CART", payload);
-        return {
-            ... state,
-            products: payload.products
-        }
+export enum ShopActionType {
+    ADD = 'add',
+    REMOVE = 'remove',
+    UPDATE = 'update',
+  }
+  
+  export type ShopAction = {
+    type: ShopActionType;
+    payload: any;
+  };
+  
+  export const add = (product: Product): ShopAction => ({
+    type: ShopActionType.ADD,
+    payload: product,
+  });
+  
+  export const remove = (product: Product): ShopAction => ({
+    type: ShopActionType.REMOVE,
+    payload: product,
+  });
 
-        case "UPDATE_PRICE":
-            console.log("UPDATE_PRICE", payload);
-
-            return {
-                ... state,
-                total: payload.total
-            }
-            default: throw new Error("No case for type ${type} found in the reducer.");
-
-}
-}
-
-export default shopReducer
+  export const update = (total: number): ShopAction => ({
+    type: ShopActionType.UPDATE,
+    payload: total,
+  });
