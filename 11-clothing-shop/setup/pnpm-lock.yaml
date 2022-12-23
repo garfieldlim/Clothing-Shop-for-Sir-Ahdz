@@ -1,12 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@react-icons/all-files': ^4.1.0
   '@types/react': ^18.0.24
   '@types/react-dom': ^18.0.8
   '@types/styled-components': ^5.1.26
   '@vitejs/plugin-react': ^2.2.0
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-icons: ^4.7.1
   react-is: ^18.2.0
   react-router-dom: ^6.4.4
   styled-components: ^5.3.6
@@ -14,8 +16,10 @@ specifiers:
   vite: ^3.2.3
 
 dependencies:
+  '@react-icons/all-files': 4.1.0_react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-icons: 4.7.1_react@18.2.0
   react-router-dom: 6.4.4_biqbaboplfbrettd7655fr4n2y
   styled-components: 5.3.6_7i5myeigehqah43i5u7wbekgba
 
@@ -369,6 +373,14 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
+
+  /@react-icons/all-files/4.1.0_react@18.2.0:
+    resolution: {integrity: sha512-hxBI2UOuVaI3O/BhQfhtb4kcGn9ft12RWAFVMUeNjqqhLsHvFtzIkFaptBJpFDANTKoDfdVoHTKZDlwKCACbMQ==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@remix-run/router/1.0.4:
     resolution: {integrity: sha512-gTL8H5USTAKOyVA4xczzDJnC3HMssdFa3tRlwBicXynx9XfiXwneHnYQogwSKpdCkjXISrEKSTtX62rLpNEVQg==}
@@ -879,6 +891,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-icons/4.7.1_react@18.2.0:
+    resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:
